@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/binary_search_tree_fabriziofranco.dir/mocker/mocker.cpp.o CMakeFiles/binary_search_tree_fabriziofranco.dir/tester/tester.cpp.o CMakeFiles/binary_search_tree_fabriziofranco.dir/main.cpp.o  -o binary_search_tree_fabriziofranco 

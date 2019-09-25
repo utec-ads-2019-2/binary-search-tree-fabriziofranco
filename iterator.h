@@ -9,20 +9,17 @@ class Iterator {
         Node<T> *current;
 
     public:
-        Iterator() {
-            // TODO
-        }
+        Iterator():current(nullptr){}
+        explicit Iterator(Node<T> *node): current(node){}
 
-        Iterator(Node<T> *node) {
-            // TODO
-        }
 
-        Iterator<T>& operator=(const Iterator<T> &other) {          
-            // TODO
+        Iterator<T>& operator=(const Iterator<T> &other) {
+            this->current=other.current;
+            return *this;
         }
 
         bool operator!=(Iterator<T> other) {
-            // TODO
+            return this->current!=other.current;
         }
 
         Iterator<T>& operator++() {
@@ -34,7 +31,9 @@ class Iterator {
         }
 
         T operator*() {
-            // TODO
+            if(current)
+                return this->current->data;
+            throw out_of_range("Empty node");
         }
 };
 

@@ -14,10 +14,24 @@ class Node {
     Node<T> *right;
 
     template<class>
-    friend class BSTree; 
+    friend class BSTree;
 
     template<class>
-    friend class Iterator; 
+    friend class Iterator;
+
+public:
+    explicit Node(T data):data(data),left(nullptr),right(nullptr){};
+
+    void Destroy(){
+        if(this){
+            if(this->left)
+                left->Destroy();
+            if(this->right)
+                right->Destroy();
+            delete this;
+        }
+    }
+
 };
 
 #endif
