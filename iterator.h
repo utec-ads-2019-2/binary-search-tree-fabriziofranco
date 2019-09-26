@@ -2,15 +2,18 @@
 #define ITERATOR_H
 
 #include "node.h"
+#include <stack>
 
 template <typename T> 
 class Iterator {
     private:
         Node<T> *current;
+        stack<Node<T>*> order;
 
     public:
         Iterator():current(nullptr){}
-        explicit Iterator(Node<T> *node): current(node){}
+        explicit Iterator(Node<T> *node): current(node){
+        }
 
 
         Iterator<T>& operator=(const Iterator<T> &other) {
@@ -28,6 +31,7 @@ class Iterator {
 
         Iterator<T>& operator--() {
             // TODO
+            //OPCIONAL
         }
 
         T operator*() {

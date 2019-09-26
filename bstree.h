@@ -27,32 +27,68 @@ class BSTree {
             return false;
         }
 
+        Node<T> *Izquierdo(Node<T> * node) {
+            while (node->left)
+                node = node->left;
+            return node;
+        }
+
         void insert(T data) {
-            auto Nuevo_nodo= new Node<T>(data);
+            auto nuevo = new Node<T>(data);
             if (!root)
-                root = Nuevo_nodo;
+                root = nuevo;
             else {
-                auto temp = root;
-                while(temp->right and temp->left) {
-                    if (data <= temp->data)
-                        temp= temp->left;
+                Node<T> * actual=root, *prev = root;
+                while(actual) {
+                    prev = actual;
+                    if (data <= actual->data)
+                        actual = actual->left;
                     else
-                        temp = temp->right;
+                        actual = actual->right;
                 }
-                if (data <= temp->data)
-                    temp->left = Nuevo_nodo;
+                if (data <= prev->data)
+                    prev->left = nuevo;
                 else
-                    temp->right = Nuevo_nodo;
+                    prev->right = nuevo;
             }
             tamano++;
         }
 
+        Node<T> *Pre_Remove_and_order(Node<T> * node, T data) {
+            if (!node)
+                return node;
+            else if (data < node->data)
+                node->left = Pre_Remove_and_order(node->left, data);
+
+            else if (data > node->data)
+                node->right = Pre_Remove_and_order(node->right, data);
+
+            else { //Data igual a la que se desea remover
+                if (!node->right) {
+                    auto temp = node->left;
+                    delete node;
+                    return temp;
+                }
+                else if (!node->left) {
+                    auto temp = node->right;
+                    delete node;
+                    return temp;
+                }
+                auto minDataNode = Izquierdo(node->right);
+                node->data = minDataNode->data;
+                node->right = Pre_Remove_and_order(node->right, minDataNode->data);
+            }
+            return node;
+        }
 
         bool remove(T data) {
-            if(find(data)){
+            if(!find(data)||!root)
+                return false;
+            else{
+                root = Pre_Remove_and_order(root, data);
+                --tamano;
                 return true;
-            }
-            return false;
+                }
         }
 
         size_t size() {
@@ -73,26 +109,39 @@ class BSTree {
             return root;
         }
 
-        void traversePreOrder(Node<T> * nodo) {
+        void traversepreOrder(Node<T> * nodo) {
             if (!nodo) return;
             cout << nodo->data << " ";
-            traversePreOrder(nodo->left);
-            traversePreOrder(nodo->right);
+            traversepreOrder(nodo->left);
+            traversepreOrder(nodo->right);
         }
 
-        void traverseInOrder(Node<T> * nodo) {
+        void traverseinOrder(Node<T> * nodo) {
             if (!nodo) return;
-            traverseInOrder(nodo->left);
+            traverseinOrder(nodo->left);
             cout << nodo->data << " ";
-            traverseInOrder(nodo->right);
+            traverseinOrder(nodo->right);
         }
 
-        void traversePostOrder(Node<T> * nodo) {
+        void traversepostOrder(Node<T> * nodo) {
             if (!nodo) return;
-            traversePostOrder(nodo->left);
-            traversePostOrder(nodo->right);
+            traversepostOrder(nodo->left);
+            traversepostOrder(nodo->right);
             cout << nodo->data << " ";
         }
+
+        void traversePreOrder(){
+            traversepreOrder(root);
+        }
+
+        void traverseInOrder(){
+            traverseinOrder(root);
+        }
+
+        void traversePostOrder(){
+            traversepostOrder(root);
+        }
+
 
         Iterator<T> begin() {
             return Iterator<T>(root);
@@ -106,8 +155,5 @@ class BSTree {
             root->Destroy();
         }
 };
-
-
-//FALTA REMOVE E ITERADORES
 
 #endif

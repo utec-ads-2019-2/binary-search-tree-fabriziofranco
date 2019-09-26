@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
     cout << "Binary Search Tree Practice" << endl;
     cout << "===========================================================" << endl << endl;
 
-    //Tester::execute();
+    Tester::execute();
 
     auto arbol=new BSTree<int>;
     arbol->insert(8);
@@ -20,6 +20,14 @@ int main(int argc, char *argv[]) {
     arbol->insert(4);
     arbol->insert(7);
     arbol->insert(13);
+    arbol->traversePreOrder();
+    cout<<endl;
+    arbol->traverseInOrder();
+    cout<<endl;
+    arbol->traversePostOrder();
+    arbol->remove(4);
+    cout<<endl;
+    arbol->traverseInOrder();
     delete arbol;
     return EXIT_SUCCESS;
 }
