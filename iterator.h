@@ -9,6 +9,7 @@ class Iterator {
     private:
         Node<T> *current;
         stack<Node<T>*> stack_de_avance;
+        stack<Node<T>*> stack_de_retroceso;
 
     public:
         Iterator():current(nullptr){}
@@ -37,6 +38,7 @@ class Iterator {
 
         Iterator<T>& operator++() {
             if(current && !stack_de_avance.empty()){
+                stack_de_retroceso.push(stack_de_avance.top());
                 if(current->right){
                     auto temp=current->right;
                     stack_de_avance.pop();
@@ -58,9 +60,12 @@ class Iterator {
         }
 
         Iterator<T>& operator--() {
-            // TODO
-            //OPCIONAL
-        }
+                if(stack_de_retroceso.empty())
+                    throw out_of_range("There's not prev element");
+                current=stack_de_retroceso.top();
+                stack_de_retroceso.pop();
+                return *this;
+                    }
 
         T operator*() {
             if(current)

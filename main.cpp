@@ -27,7 +27,13 @@ int main(int argc, char *argv[]) {
     //arbol->traversePostOrder();
     //arbol->remove(4);
     cout<<endl;
-    for(auto it=arbol->begin();it!=arbol->end();++it){
+    auto it=arbol->begin();
+    for(;it!=arbol->end();++it){
+        cout<<*it<<" ";
+    }
+    cout<<endl;
+    for(size_t j=0;j<arbol->size();j++){
+        --it;
         cout<<*it<<" ";
     }
     delete arbol;
