@@ -20,14 +20,16 @@ int main(int argc, char *argv[]) {
     arbol->insert(4);
     arbol->insert(7);
     arbol->insert(13);
-    arbol->traversePreOrder();
+    //arbol->traversePreOrder();
     cout<<endl;
     arbol->traverseInOrder();
     cout<<endl;
-    arbol->traversePostOrder();
-    arbol->remove(4);
+    //arbol->traversePostOrder();
+    //arbol->remove(4);
     cout<<endl;
-    arbol->traverseInOrder();
+    for(auto it=arbol->begin();it!=arbol->end();++it){
+        cout<<*it<<" ";
+    }
     delete arbol;
     return EXIT_SUCCESS;
 }

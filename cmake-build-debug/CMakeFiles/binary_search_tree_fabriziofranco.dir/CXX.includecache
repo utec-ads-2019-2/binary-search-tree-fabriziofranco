@@ -18,12 +18,6 @@ node.h
 stack
 -
 
-/home/fabrizio/Desktop/ADS/binary-search-tree-fabriziofranco/main.cpp
-iostream
--
-tester/tester.h
-/home/fabrizio/Desktop/ADS/binary-search-tree-fabriziofranco/tester/tester.h
-
 /home/fabrizio/Desktop/ADS/binary-search-tree-fabriziofranco/mocker/mocker.h
 random
 -
@@ -31,6 +25,10 @@ type_traits
 -
 
 /home/fabrizio/Desktop/ADS/binary-search-tree-fabriziofranco/node.h
+
+/home/fabrizio/Desktop/ADS/binary-search-tree-fabriziofranco/tester/tester.cpp
+tester.h
+/home/fabrizio/Desktop/ADS/binary-search-tree-fabriziofranco/tester/tester.h
 
 /home/fabrizio/Desktop/ADS/binary-search-tree-fabriziofranco/tester/tester.h
 stdexcept
