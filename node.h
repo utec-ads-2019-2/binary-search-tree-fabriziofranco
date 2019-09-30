@@ -23,7 +23,7 @@ public:
     explicit Node(T data):data(data),left(nullptr),right(nullptr){};
 
     void Destroy(){
-        if(this){
+        if(this){ // Esto no es necesario porque this siempre va a existir. Esta revisión deberías hacerla fuera del nodo, en el árbol
             if(this->left)
                 left->Destroy();
             if(this->right)

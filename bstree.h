@@ -95,6 +95,7 @@ class BSTree {
             return tamano;
         }
 
+        // Esto debería ser privado
         int altura(Node<T>* node){
             if (!node)
                 return -1;
@@ -105,10 +106,12 @@ class BSTree {
             return altura(root);
         }
 
+         // Esto debería ser privado
         Node<T>* getroot(){
             return root;
         }
 
+        // Esto debería ser privado
         void traversepreOrder(Node<T> * nodo) {
             if (!nodo) return;
             cout << nodo->data << " ";
@@ -116,6 +119,7 @@ class BSTree {
             traversepreOrder(nodo->right);
         }
 
+        // Esto debería ser privado
         void traverseinOrder(Node<T> * nodo) {
             if (!nodo) return;
             traverseinOrder(nodo->left);
@@ -123,6 +127,7 @@ class BSTree {
             traverseinOrder(nodo->right);
         }
 
+        // Esto debería ser privado
         void traversepostOrder(Node<T> * nodo) {
             if (!nodo) return;
             traversepostOrder(nodo->left);
